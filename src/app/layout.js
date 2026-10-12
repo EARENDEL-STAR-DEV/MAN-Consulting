@@ -68,7 +68,7 @@ const structuredData = {
   name: "MAN Engineering Consultancy",
   alternateName: "شركة MAN للاستشارات الهندسية",
   url: siteUrl,
-  email: "hr@mnc.sa",
+  email: "info@marwannazer.com",
   telephone: "+966569898000",
   address: {
     "@type": "PostalAddress",

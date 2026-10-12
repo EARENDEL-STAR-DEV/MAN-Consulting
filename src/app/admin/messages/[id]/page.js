@@ -306,7 +306,7 @@ export default function MessageDetailPage() {
                             <label className="text-xs text-[#F2B233] block">{t('admin.messages.fromLabel')}</label>
                             <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2.5">
                               <Mail size={13} className="text-white/30 shrink-0" />
-                              <span className="text-white/65 text-xs truncate">{COMPANY.email}</span>
+                              <span className="text-white/65 text-xs truncate">{COMPANY.senderEmail}</span>
                             </div>
                           </div>
 

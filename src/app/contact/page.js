@@ -7,7 +7,7 @@ import Image from "next/image";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSiteContent } from "@/hooks/useSiteContent";
-import { COMPANY, LEGACY_PHONE, LEGACY_WHATSAPP } from "@/config/company";
+import { COMPANY, LEGACY_EMAIL, LEGACY_PHONE, LEGACY_WHATSAPP } from "@/config/company";
 
 /* ── Themed pin icon (gold gradient, matches site theme) for the Google Maps JS API marker ── */
 const MAP_PIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="50" viewBox="0 0 38 50" fill="none">
@@ -301,7 +301,7 @@ export default function ContactPage() {
 
   const phone1   = (cms?.phone1 && cms.phone1 !== LEGACY_PHONE) ? cms.phone1 : COMPANY.phone;
   const phone2   = cms?.phone2   || "";
-  const email    = cms?.email    || COMPANY.email;
+  const email    = (cms?.email && cms.email !== LEGACY_EMAIL) ? cms.email : COMPANY.email;
   const whatsapp = (cms?.whatsapp && cms.whatsapp !== LEGACY_WHATSAPP) ? cms.whatsapp : COMPANY.whatsapp;
 
   const handleContactSubmit = async (e) => {

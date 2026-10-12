@@ -142,8 +142,11 @@ export async function POST(req) {
 </body>
 </html>`;
 
+    // From must be the authenticated SMTP mailbox; replies go to the public address.
+    const SENDER = process.env.SMTP_USER || COMPANY.senderEmail;
     await transporter.sendMail({
-      from:    isAr ? `"شركة MAN للاستشارات الهندسية" <${COMPANY.email}>` : `"${COMPANY.name}" <${COMPANY.email}>`,
+      from:    isAr ? `"شركة MAN للاستشارات الهندسية" <${SENDER}>` : `"${COMPANY.name}" <${SENDER}>`,
+      replyTo: COMPANY.email,
       to:      customerEmail,
       subject: subject || (isAr ? 'رد من شركة MAN للاستشارات الهندسية' : 'Reply from MAN Engineering Consultancy'),
       html,
