@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { Calendar, Building2, Users, Award } from "lucide-react";
+import { Calendar, Award } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
@@ -105,15 +105,7 @@ const About = () => {
       label: { ar: "تأسست عام", en: "Since", zh: "始于", es: "Desde", fr: "Depuis", de: "Seit", tr: "Kuruluş", ur: "قیام", hi: "स्थापना", ru: "С" }[lang] || "Since"
     },
     {
-      icon: Building2, value: 500, prefix: "+", suffix: "",
-      label: { ar: "مشروع", en: "Projects", zh: "项目", es: "Proyectos", fr: "Projets", de: "Projekte", tr: "Proje", ur: "منصوبے", hi: "परियोजनाएं", ru: "Проектов" }[lang] || "Projects"
-    },
-    {
-      icon: Users, value: 35, prefix: "+", suffix: "",
-      label: { ar: "مهندس", en: "Engineers", zh: "工程师", es: "Ingenieros", fr: "Ingénieurs", de: "Ingenieure", tr: "Mühendis", ur: "انجینئرز", hi: "इंजीनियर", ru: "Инженеров" }[lang] || "Engineers"
-    },
-    {
-      icon: Award, value: 30, prefix: "+", suffix: "",
+      icon: Award, value: 38, prefix: "+", suffix: "",
       label: { ar: "عام خبرة", en: "Years Experience", zh: "年经验", es: "Años de experiencia", fr: "Ans d'expérience", de: "Jahre Erfahrung", tr: "Yıl Deneyim", ur: "سال تجربہ", hi: "वर्षों का अनुभव", ru: "Лет опыта" }[lang] || "Years Experience"
     },
   ];
@@ -163,7 +155,7 @@ const About = () => {
               {descText}
             </p>
 
-            {/* Key figures — 2x2 */}
+            {/* Key figures — founded year + years of experience */}
             <div className="mt-10 grid grid-cols-2 max-w-md border-y border-[rgba(212,168,67,0.18)]">
               {stats.map((stat, i) => {
                 const Icon = stat.icon;
