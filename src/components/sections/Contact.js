@@ -3,14 +3,14 @@
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSiteContent } from "@/hooks/useSiteContent";
-import { COMPANY } from "@/config/company";
+import { COMPANY, LEGACY_PHONE } from "@/config/company";
 
 const Contact = () => {
   const { lang, t } = useLanguage();
   const isRTL = lang === 'ar' || lang === 'ur';
   const { data: cms } = useSiteContent('contact');
 
-  const phone1   = cms?.phone1    || '0598242385';
+  const phone1   = (cms?.phone1 && cms.phone1 !== LEGACY_PHONE) ? cms.phone1 : COMPANY.phone;
   const phone2   = cms?.phone2    || '';
   const email    = cms?.email     || COMPANY.email;
   const address  = (isRTL ? cms?.address_ar : cms?.address_en) || t('footer.location');

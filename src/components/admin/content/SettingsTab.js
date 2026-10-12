@@ -86,7 +86,7 @@ export default function SettingsTab() {
           <Field label="Twitter / X" value={form.social_twitter} onChange={v => set('social_twitter', v)} placeholder="https://twitter.com/..." />
           <Field label="LinkedIn" value={form.social_linkedin} onChange={v => set('social_linkedin', v)} placeholder="https://linkedin.com/..." />
           <Field label="YouTube" value={form.social_youtube} onChange={v => set('social_youtube', v)} placeholder="https://youtube.com/..." />
-          <Field label={t('admin.contentTabs.settingsTab.whatsappNumberLabel')} value={form.social_whatsapp} onChange={v => set('social_whatsapp', v)} placeholder="966598242385" />
+          <Field label={t('admin.contentTabs.settingsTab.whatsappNumberLabel')} value={form.social_whatsapp} onChange={v => set('social_whatsapp', v)} placeholder="966569898000" />
         </Grid2>
       </Section>
 

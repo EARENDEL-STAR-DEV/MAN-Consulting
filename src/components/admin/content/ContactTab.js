@@ -7,7 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { COMPANY } from '@/config/company';
 
 const DEF = {
-  phone1: '0598242385',
+  phone1: '0569898000',
   phone2: '',
   email: COMPANY.email,
   address_ar: 'جدة، المملكة العربية السعودية',
@@ -16,7 +16,7 @@ const DEF = {
   hours_en: '8 AM – 10 PM',
   days_ar: 'السبت – الخميس',
   days_en: 'Saturday – Thursday',
-  whatsapp: '966598242385',
+  whatsapp: '966569898000',
 };
 
 export default function ContactTab() {
@@ -47,13 +47,13 @@ export default function ContactTab() {
     <div className="space-y-5 max-w-2xl">
       <Section title={t('admin.contentTabs.contactTab.phoneNumbersSectionTitle')} icon={Phone}>
         <Grid2>
-          <Field label={t('admin.contentTabs.contactTab.phone1Label')} value={form.phone1} onChange={v => set('phone1', v)} placeholder="0598242385" />
+          <Field label={t('admin.contentTabs.contactTab.phone1Label')} value={form.phone1} onChange={v => set('phone1', v)} placeholder="0569898000" />
           <Field label={t('admin.contentTabs.contactTab.phone2Label')} value={form.phone2} onChange={v => set('phone2', v)} placeholder="0505649859" />
         </Grid2>
       </Section>
 
       <Section title={t('admin.contentTabs.contactTab.whatsappSectionTitle')} icon={MessageCircle}>
-        <Field label={t('admin.contentTabs.contactTab.whatsappLabel')} value={form.whatsapp} onChange={v => set('whatsapp', v)} placeholder="966598242385" />
+        <Field label={t('admin.contentTabs.contactTab.whatsappLabel')} value={form.whatsapp} onChange={v => set('whatsapp', v)} placeholder="966569898000" />
       </Section>
 
       <Section title={t('admin.contentTabs.contactTab.emailSectionTitle')} icon={Mail}>

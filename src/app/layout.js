@@ -69,7 +69,7 @@ const structuredData = {
   alternateName: "شركة MAN للاستشارات الهندسية",
   url: siteUrl,
   email: "hr@mnc.sa",
-  telephone: "+966598242385",
+  telephone: "+966569898000",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Al-Andalus District - 2781 Abdulrahman Al-Tubaishi St.",
