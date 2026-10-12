@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { ShieldCheck, Calendar, Building2, Users, Award } from "lucide-react";
+import { Calendar, Building2, Users, Award } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSiteContent } from "@/hooks/useSiteContent";
 
@@ -66,27 +66,6 @@ const About = () => {
   const ceoName = aboutCms?.ceo_name || t('about.ceoName');
   const ceoTitle = (isRTL ? aboutCms?.ceo_pos_ar : aboutCms?.ceo_pos_en) || t('about.ceoTitle');
 
-  const companyName = {
-    ar: "شركة MAN للاستشارات الهندسية", en: "MAN Engineering Consultancy",
-    zh: "MAN工程咨询公司", es: "MAN Engineering Consultancy", fr: "MAN Engineering Consultancy",
-    de: "MAN Engineering Consultancy", tr: "MAN Engineering Consultancy", ur: "ایم اے این انجینئرنگ کنسلٹنسی",
-    hi: "एमएएन इंजीनियरिंग कंसल्टेंसी", ru: "MAN Engineering Consultancy"
-  }[lang] || "MAN Engineering Consultancy";
-
-  const shortDesc = {
-    ar: "نهندس بصمتنا في عالم التصميم والاستشارات الهندسية بأعلى معايير الجودة والاحترافية.",
-    en: "We engineer our mark in the world of design and engineering consultancy with the highest standards of quality and professionalism.",
-    zh: "我们以最高的质量和专业标准，在设计与工程咨询领域打造我们的印记。",
-    es: "Forjamos nuestra huella en el diseño y la consultoría de ingeniería con los más altos estándares de calidad y profesionalismo.",
-    fr: "Nous forgeons notre empreinte dans la conception et le conseil en ingénierie avec les plus hauts standards de qualité et de professionnalisme.",
-    de: "Wir prägen unsere Spuren in Design und Ingenieurberatung mit höchsten Standards an Qualität und Professionalität.",
-    tr: "Tasarım ve mühendislik danışmanlığı dünyasında en yüksek kalite ve profesyonellik standartlarıyla izimizi bırakıyoruz.",
-    ur: "ہم ڈیزائن اور انجینئرنگ مشاورت کی دنیا میں اعلیٰ ترین معیار اور پیشہ ورانہ مہارت کے ساتھ اپنا نقش بناتے ہیں۔",
-    hi: "हम डिज़ाइन और इंजीनियरिंग परामर्श की दुनिया में उच्चतम गुणवत्ता और व्यावसायिकता के मानकों के साथ अपनी छाप बनाते हैं।",
-    ru: "Мы создаём свой след в мире дизайна и инженерного консалтинга, соблюдая высочайшие стандарты качества и профессионализма."
-  }[lang]
-    || "We engineer our mark in the world of design and engineering consultancy with the highest standards of quality and professionalism.";
-
   const eyebrowText = {
     ar: "قيادة وخبرة", en: "Leadership & Expertise", zh: "领导力与专长",
     es: "Liderazgo y experiencia", fr: "Leadership et expertise",
@@ -139,10 +118,16 @@ const About = () => {
     },
   ];
 
+  // Both frames use one slightly-shorter portrait ratio. `landscapeCrop`
+  // applies only when the photo is wider than tall: it zooms the chairman's
+  // office shot (seated at ~54% across) to head-and-chest at 1.6x.
   const people = [
-    { image: directorImage, name: directorName, title: directorTitle, delay: '100', pos: 'center 2%' },
-    { image: ceoImage, name: ceoName, title: ceoTitle, delay: '250', pos: 'center top', tall: true },
+    { key: 'director', image: directorImage, name: directorName, title: directorTitle, pos: 'center top',
+      landscapeCrop: { objectPosition: '58% center', transform: 'scale(1.6)', transformOrigin: '50% 66%' } },
+    { key: 'ceo', image: ceoImage, name: ceoName, title: ceoTitle, pos: 'center top' },
   ];
+  // Natural aspect (w/h) of each loaded portrait
+  const [ratios, setRatios] = useState({});
 
   return (
     <section id="about" className="relative py-20 md:py-28 overflow-hidden bg-[var(--background)]" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -154,126 +139,108 @@ const About = () => {
 
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <div className="grid lg:grid-cols-12 gap-14 lg:gap-16 items-center">
 
-        {/* ── Section Header — centered ── */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20" data-aos="fade-up">
+          {/* ── Content column (faces the portraits) ── */}
+          <div className="lg:col-span-6 text-start" data-aos="fade-up">
 
-          <div className="inline-flex items-center gap-4 mb-6">
-            <span className="h-px w-12 bg-gradient-to-r from-transparent to-[#D4A843]" />
-            <span className="text-[#D4A843] font-bold tracking-[0.25em] uppercase text-[11px]">
-              {eyebrowText}
-            </span>
-            <span className="h-px w-12 bg-gradient-to-l from-transparent to-[#D4A843]" />
-          </div>
-
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6" data-aos="fade-up" data-aos-delay="100">
-            <span className="text-white">{titlePre} </span>
-            <span style={{ color: '#D4A843' }}>{titleGold}</span>
-          </h2>
-
-          <div className="flex items-center justify-center gap-2 mb-6" data-aos="fade-up" data-aos-delay="150">
-            <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, transparent, #D4A843)' }} />
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#D4A843' }} />
-            <span className="h-px w-8" style={{ background: 'linear-gradient(90deg, #D4A843, transparent)' }} />
-          </div>
-
-          <p className="text-white/60 text-base md:text-lg leading-relaxed" data-aos="fade-up" data-aos-delay="200">
-            {descText}
-          </p>
-        </div>
-
-        {/* ── Leadership Cards ── */}
-        <div className="flex flex-col gap-8 max-w-5xl mx-auto mb-16 md:mb-20">
-          {people.map((person, idx) => (
-            <div
-              key={idx}
-              className={`group relative flex flex-col md:flex-row ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''} rounded-[20px] overflow-hidden transition-all duration-500 hover:-translate-y-1 border-b-2 border-b-[#D4A843]`}
-              style={{
-                background: '#44474F',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                borderTop: '1px solid rgba(212,168,67,0.18)',
-                borderLeft: '1px solid rgba(212,168,67,0.18)',
-                borderRight: '1px solid rgba(212,168,67,0.18)',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.35)',
-              }}
-              data-aos="fade-up"
-              data-aos-delay={person.delay}
-            >
-              {/* Image — ~45% width on desktop */}
-              <div className={`relative w-full md:w-[45%] shrink-0 overflow-hidden ${person.tall ? "aspect-[1019/1600]" : "aspect-4/3 md:aspect-auto"}`}>
-                <Image
-                  src={person.image}
-                  alt={person.name}
-                  fill
-                  sizes="(max-width: 767px) 100vw, 460px"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
-                  style={{ objectPosition: person.pos }}
-                  unoptimized={person.image.startsWith('http')}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:via-transparent md:to-black/10" />
-              </div>
-
-              {/* Info */}
-              <div className={`flex-1 flex flex-col justify-center ${person.tall ? "gap-6 p-8 md:p-14" : "gap-4 p-8 md:p-10"}`}>
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.35)' }}
-                >
-                  <ShieldCheck size={22} style={{ color: '#D4A843' }} />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <h3 className={`text-white font-black leading-tight ${person.tall ? "text-3xl md:text-4xl" : "text-2xl md:text-[28px]"}`}>{person.name}</h3>
-                  <p className="font-bold text-sm md:text-base tracking-wide" style={{ color: '#D4A843' }}>{person.title}</p>
-                </div>
-
-                <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, #D4A843, transparent)' }} />
-
-                <p className="text-white/50 text-[13px] font-semibold uppercase tracking-widest">{companyName}</p>
-                <p className={`text-white/40 leading-relaxed max-w-md ${person.tall ? "text-base md:text-[17px]" : "text-sm md:text-[15px]"}`}>{shortDesc}</p>
-              </div>
+            <div className="inline-flex items-center gap-3 mb-5">
+              <span className="h-px w-10 bg-[#D4A843]" />
+              <span className="text-[#D4A843] font-bold tracking-[0.25em] uppercase text-[11px]">
+                {eyebrowText}
+              </span>
             </div>
-          ))}
-        </div>
 
-        {/* ── Premium Statistics Bar ── */}
-        <div
-          className="grid grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto rounded-2xl overflow-hidden border-b-2 border-b-[#D4A843]"
-          style={{
-            background: '#44474F',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            borderTop: '1px solid rgba(212,168,67,0.18)',
-            borderLeft: '1px solid rgba(212,168,67,0.18)',
-            borderRight: '1px solid rgba(212,168,67,0.18)',
-          }}
-          data-aos="fade-up"
-        >
-          {stats.map((stat, i) => {
-            const Icon = stat.icon;
-            return (
-              <div
-                key={i}
-                className={`flex flex-col items-center text-center gap-3 px-6 py-8 md:py-10 border-[rgba(212,168,67,0.14)]
-                  ${i % 2 === 1 ? 'border-s' : ''}
-                  ${i >= 2 ? 'border-t' : ''} md:border-t-0
-                  ${i >= 1 ? 'md:border-s' : 'md:border-s-0'}`}
-              >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{ background: 'rgba(212,168,67,0.15)', border: '1px solid rgba(212,168,67,0.35)' }}
+            <h2 className="text-4xl md:text-5xl font-black leading-[1.2] mb-5">
+              <span className="text-white">{titlePre} </span>
+              <span style={{ color: '#D4A843' }}>{titleGold}</span>
+            </h2>
+
+            <div className="h-1 w-16 rounded-full" style={{ background: 'linear-gradient(90deg, #D4A843, #E8C66A)' }} />
+
+            <p className="mt-6 text-white/60 text-base md:text-lg leading-loose max-w-xl">
+              {descText}
+            </p>
+
+            {/* Key figures — 2x2 */}
+            <div className="mt-10 grid grid-cols-2 max-w-md border-y border-[rgba(212,168,67,0.18)]">
+              {stats.map((stat, i) => {
+                const Icon = stat.icon;
+                return (
+                  <div
+                    key={i}
+                    className={`flex items-center gap-3 py-5 ${i % 2 === 0 ? 'pe-5 border-e border-[rgba(212,168,67,0.18)]' : 'ps-5'} ${i >= 2 ? 'border-t border-[rgba(212,168,67,0.18)]' : ''}`}
+                  >
+                    <span className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+                      style={{ background: 'rgba(212,168,67,0.12)', border: '1px solid rgba(212,168,67,0.3)' }}>
+                      <Icon size={17} style={{ color: '#D4A843' }} />
+                    </span>
+                    <div className="min-w-0">
+                      <div className="text-2xl md:text-3xl font-black leading-none" style={{ color: '#D4A843' }}>
+                        <StatNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                      </div>
+                      <div className="mt-1.5 text-white/55 text-xs md:text-sm font-semibold">{stat.label}</div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── Portraits column: two equal portrait cards, stacked, each with
+               a small name plate in a bottom corner and a gold corner frame ── */}
+          <div className="lg:col-span-6 flex flex-col items-center gap-14 md:gap-16">
+            {people.map((person, i) => {
+              const plateOnLeft = (i === 0) === isRTL;
+              const crop = person.landscapeCrop && ratios[person.key] > 1 ? person.landscapeCrop : null;
+              return (
+                <article
+                  key={person.key}
+                  className="relative w-[220px] sm:w-[240px]"
+                  data-aos="fade-up"
+                  data-aos-delay={150 + i * 150}
                 >
-                  <Icon size={20} style={{ color: '#D4A843' }} />
-                </div>
-                <div className="text-3xl md:text-4xl font-black style={{ color: '#D4A843' }}">
-                  <StatNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-                </div>
-                <span className="text-white/50 text-xs md:text-sm font-semibold tracking-wide">{stat.label}</span>
-              </div>
-            );
-          })}
-        </div>
+                  <div className="relative z-10 group">
+                    <div className="relative rounded-2xl overflow-hidden border-4 border-[#44474F] bg-[#2A2C32] shadow-[0_24px_50px_-18px_rgba(0,0,0,0.7)] aspect-[1019/1450]">
+                      <div className="absolute inset-0" style={crop ? { transform: crop.transform, transformOrigin: crop.transformOrigin } : undefined}>
+                        <Image
+                          src={person.image}
+                          alt={person.name}
+                          fill
+                          sizes="(max-width: 640px) 440px, 480px"
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                          style={{ objectPosition: crop ? crop.objectPosition : person.pos }}
+                          unoptimized={person.image.startsWith('http')}
+                          onLoad={(e) => {
+                            const { naturalWidth: w, naturalHeight: h } = e.currentTarget;
+                            if (w && h) setRatios((r) => (r[person.key] === w / h ? r : { ...r, [person.key]: w / h }));
+                          }}
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
 
+                    {/* Gold corner frame (opposite the plate) */}
+                    <div className={`absolute -top-4 w-16 h-16 md:w-20 md:h-20 border-t-4 border-[#D4A843] -z-10 ${plateOnLeft ? '-right-4 border-r-4 rounded-tr-3xl' : '-left-4 border-l-4 rounded-tl-3xl'}`} />
+                  </div>
+
+                  {/* Name plate — small, in the bottom corner */}
+                  <div
+                    className={`absolute -bottom-6 ${plateOnLeft ? '-left-6' : '-right-6'} z-20 max-w-[85%] px-4 py-3 rounded-xl text-start shadow-[0_14px_32px_-12px_rgba(0,0,0,0.6)]`}
+                    style={{ background: '#2A2C32', border: '1px solid rgba(212,168,67,0.3)' }}
+                    data-aos="fade-up"
+                    data-aos-delay={400 + i * 150}
+                  >
+                    <h4 className="font-bold text-sm md:text-base leading-snug mb-0.5" style={{ color: '#D4A843' }}>{person.name}</h4>
+                    <p className="text-white/70 text-[9px] md:text-[10px] uppercase tracking-wider font-bold leading-relaxed">{person.title}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+        </div>
       </div>
     </section>
   );
