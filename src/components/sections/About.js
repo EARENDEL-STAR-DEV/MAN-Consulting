@@ -62,7 +62,7 @@ const About = () => {
     ? (aboutCms?.director_pos_ar || t('about.directorTitle'))
     : (aboutCms?.director_pos_en || t('about.directorTitle'));
 
-  const ceoImage = aboutCms?.ceo_image || '/asstes/directorr-Company%20manager.jpeg';
+  const ceoImage = aboutCms?.ceo_image || '/asstes/ceo-man-2026.jpeg';
   const ceoName = aboutCms?.ceo_name || t('about.ceoName');
   const ceoTitle = (isRTL ? aboutCms?.ceo_pos_ar : aboutCms?.ceo_pos_en) || t('about.ceoTitle');
 
