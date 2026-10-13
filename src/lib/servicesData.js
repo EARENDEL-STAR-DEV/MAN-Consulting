@@ -41,7 +41,7 @@ export const SERVICES_DATA = {
         advantagesTitle: "مميزاتنا في هذه الخدمة",
         advantages: [
           {
-            title: "خبرة 38+ عاماً",
+            title: "خبرة 40+ عاماً",
             desc: "خبرة متراكمة في تصميم مئات المشاريع الناجحة بمختلف الأحجام والتعقيدات في المملكة العربية السعودية.",
           },
           {
@@ -86,7 +86,7 @@ export const SERVICES_DATA = {
         advantagesTitle: "Our Advantages in This Service",
         advantages: [
           {
-            title: "38+ Years of Experience",
+            title: "40+ Years of Experience",
             desc: "Accumulated expertise designing hundreds of successful projects of various sizes and complexities across Saudi Arabia.",
           },
           {

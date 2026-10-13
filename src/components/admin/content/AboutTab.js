@@ -6,8 +6,8 @@ import { Field, TextArea, Section, SaveBtn, ImageUpload, Grid2, TabLoading } fro
 import { useLanguage } from '@/context/LanguageContext';
 
 const DEF = {
-  about_ar: 'شركة MAN للاستشارات الهندسية، رائدة في تقديم حلول التصميم والاستشارات الهندسية بالمملكة العربية السعودية منذ أكثر من 38 عامًا.',
-  about_en: 'MAN Engineering Consultancy, a leader in engineering design and consultancy solutions in Saudi Arabia for over 38 years.',
+  about_ar: 'شركة MAN للاستشارات الهندسية، رائدة في تقديم حلول التصميم والاستشارات الهندسية بالمملكة العربية السعودية منذ أكثر من 40 عامًا.',
+  about_en: 'MAN Engineering Consultancy, a leader in engineering design and consultancy solutions in Saudi Arabia for over 40 years.',
   director_name: 'م. مروان أحمد ناظر',
   director_pos_ar: 'المدير العام',
   director_pos_en: 'General Manager',
@@ -17,7 +17,7 @@ const DEF = {
   ceo_pos_ar: '',
   ceo_pos_en: '',
   stats: [
-    { value: '38+', label_ar: 'سنة خبرة',     label_en: 'Years of Experience' },
+    { value: '40+', label_ar: 'سنة خبرة',     label_en: 'Years of Experience' },
     { value: '230+', label_ar: 'مشروع منجز',   label_en: 'Completed Projects' },
     { value: '99%', label_ar: 'رضى العملاء',   label_en: 'Client Satisfaction' },
     { value: '300+', label_ar: 'عضو في الفريق', label_en: 'Team Members' },
@@ -96,7 +96,7 @@ export default function AboutTab() {
       <Section title={t('admin.contentTabs.aboutTab.statsSectionTitle')} icon={BarChart2}>
         {form.stats.map((s, i) => (
           <div key={i} className="grid grid-cols-3 gap-2">
-            <Field label={i === 0 ? t('admin.contentTabs.aboutTab.valueLabel') : ''} value={s.value} onChange={v => setStat(i, 'value', v)} placeholder="38+" />
+            <Field label={i === 0 ? t('admin.contentTabs.aboutTab.valueLabel') : ''} value={s.value} onChange={v => setStat(i, 'value', v)} placeholder="40+" />
             <Field label={i === 0 ? t('admin.contentTabs.aboutTab.labelArLabel') : ''} value={s.label_ar} onChange={v => setStat(i, 'label_ar', v)} />
             <Field label={i === 0 ? t('admin.contentTabs.aboutTab.labelEnLabel') : ''} value={s.label_en} onChange={v => setStat(i, 'label_en', v)} />
           </div>

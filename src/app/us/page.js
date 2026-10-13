@@ -55,7 +55,7 @@ export default function AboutUsPage() {
         label: isRTL ? s.label_ar : (s.label_en || s.label_ar),
       }))
     : [
-        { value: "38+",  label: heroStatsLabels[0] },
+        { value: "40+",  label: heroStatsLabels[0] },
         { value: "50+",  label: heroStatsLabels[1] },
         { value: "98%",  label: heroStatsLabels[2] },
         { value: "300+", label: heroStatsLabels[3] },

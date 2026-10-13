@@ -240,7 +240,7 @@ export const en = {
     recentTitle: "Recent Work 2025"
   },
   footer: {
-    brandDesc: "MAN Engineering Consultancy — Building our mark in construction with the highest standards of quality and professionalism for over 38 years.",
+    brandDesc: "MAN Engineering Consultancy — Building our mark in construction with the highest standards of quality and professionalism for over 40 years.",
     quickLinks: "Quick Links",
     services: "Services",
     rightsReserved: "MAN Engineering Consultancy — All Rights Reserved",

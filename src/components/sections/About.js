@@ -87,17 +87,17 @@ const About = () => {
   }[lang] || "Builds Trust";
 
   const descText = {
-    ar: "نؤمن بأن الهندسة رسالة قبل أن تكون مهنة، وخلف كل مشروع ناجح قيادة راسخة منذ عام 1986 — بخبرة تمتد لأكثر من ثلاثة عقود تحوّل الرؤية إلى واقع وتصنع الفارق في كل تفصيلة.",
-    en: "We believe engineering is a calling before a profession — behind every successful project stands leadership rooted since 1986, with over three decades of experience turning vision into reality.",
-    zh: "我们相信工程是一种使命——自1986年以来，每个成功项目背后都有深厚的领导力，三十余年经验将愿景变为现实。",
-    fr: "Nous croyons que l'ingénierie est une vocation — derrière chaque projet réussi se trouve un leadership ancré depuis 1986, fort de plus de trois décennies d'expérience.",
-    es: "Creemos que la ingeniería es una vocación — detrás de cada proyecto exitoso hay un liderazgo consolidado desde 1986, con más de tres décadas de experiencia.",
-    de: "Wir glauben, dass Ingenieurwesen eine Berufung ist — hinter jedem erfolgreichen Projekt steht eine seit 1986 verwurzelte Führung mit über drei Jahrzehnten Erfahrung.",
-    tr: "Mühendisliğin bir meslek olmadan önce bir misyon olduğuna inanıyoruz — her başarılı projenin arkasında 1986'dan bu yana köklü, otuz yılı aşkın deneyime sahip bir liderlik vardır.",
-    ur: "ہمارا ماننا ہے کہ انجینئرنگ ایک پیشے سے پہلے ایک مشن ہے — ہر کامیاب منصوبے کے پیچھے 1986 سے قائم قیادت ہے جو تین دہائیوں سے زائد تجربے کے ساتھ وژن کو حقیقت میں بدلتی ہے۔",
-    hi: "हम मानते हैं कि इंजीनियरिंग एक पेशे से पहले एक मिशन है — हर सफल परियोजना के पीछे 1986 से स्थापित नेतृत्व है, जिसके पास तीन दशकों से अधिक का अनुभव है।",
-    ru: "Мы верим, что инженерия — это призвание. За каждым успешным проектом стоит руководство, заложенное с 1986 года, с более чем тридцатилетним опытом."
-  }[lang] || "We believe engineering is a calling before a profession — behind every successful project stands leadership rooted since 1986, with over three decades of experience.";
+    ar: "نؤمن بأن الهندسة رسالة قبل أن تكون مهنة، وخلف كل مشروع ناجح قيادة راسخة منذ عام 1986 — بخبرة تمتد لأربعة عقود تحوّل الرؤية إلى واقع وتصنع الفارق في كل تفصيلة.",
+    en: "We believe engineering is a calling before a profession — behind every successful project stands leadership rooted since 1986, with four decades of experience turning vision into reality.",
+    zh: "我们相信工程是一种使命——自1986年以来，每个成功项目背后都有深厚的领导力，四十年经验将愿景变为现实。",
+    fr: "Nous croyons que l'ingénierie est une vocation — derrière chaque projet réussi se trouve un leadership ancré depuis 1986, fort de quatre décennies d'expérience.",
+    es: "Creemos que la ingeniería es una vocación — detrás de cada proyecto exitoso hay un liderazgo consolidado desde 1986, con cuatro décadas de experiencia.",
+    de: "Wir glauben, dass Ingenieurwesen eine Berufung ist — hinter jedem erfolgreichen Projekt steht eine seit 1986 verwurzelte Führung mit vier Jahrzehnten Erfahrung.",
+    tr: "Mühendisliğin bir meslek olmadan önce bir misyon olduğuna inanıyoruz — her başarılı projenin arkasında 1986'dan bu yana köklü, kırk yıllık deneyime sahip bir liderlik vardır.",
+    ur: "ہمارا ماننا ہے کہ انجینئرنگ ایک پیشے سے پہلے ایک مشن ہے — ہر کامیاب منصوبے کے پیچھے 1986 سے قائم قیادت ہے جو چار دہائیوں کے تجربے کے ساتھ وژن کو حقیقت میں بدلتی ہے۔",
+    hi: "हम मानते हैं कि इंजीनियरिंग एक पेशे से पहले एक मिशन है — हर सफल परियोजना के पीछे 1986 से स्थापित नेतृत्व है, जिसके पास चार दशकों का अनुभव है।",
+    ru: "Мы верим, что инженерия — это призвание. За каждым успешным проектом стоит руководство, заложенное с 1986 года, с сорокалетним опытом."
+  }[lang] || "We believe engineering is a calling before a profession — behind every successful project stands leadership rooted since 1986, with four decades of experience.";
 
   const stats = [
     {
@@ -105,7 +105,7 @@ const About = () => {
       label: { ar: "تأسست عام", en: "Since", zh: "始于", es: "Desde", fr: "Depuis", de: "Seit", tr: "Kuruluş", ur: "قیام", hi: "स्थापना", ru: "С" }[lang] || "Since"
     },
     {
-      icon: Award, value: 38, prefix: "+", suffix: "",
+      icon: Award, value: 40, prefix: "+", suffix: "",
       label: { ar: "عام خبرة", en: "Years Experience", zh: "年经验", es: "Años de experiencia", fr: "Ans d'expérience", de: "Jahre Erfahrung", tr: "Yıl Deneyim", ur: "سال تجربہ", hi: "वर्षों का अनुभव", ru: "Лет опыта" }[lang] || "Years Experience"
     },
   ];
