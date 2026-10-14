@@ -243,7 +243,7 @@ export const tr = {
     brandDesc: "MAN Engineering Consultancy — Mühendislik danışmanlığı dünyasında markamızı en yüksek kalite ve profesyonellik standartlarıyla inşa ediyoruz.",
     quickLinks: "Hızlı Linkler",
     services: "Hizmetler",
-    rightsReserved: "MAN Engineering Consultancy — Tüm hakları saklıdır",
+    rightsReserved: "Tüm hakları saklıdır © {year} MAN Engineering Consultancy | Suudi Arabistan Krallığı",
     location: "Cidde, Suudi Arabistan"
   },
   music: {

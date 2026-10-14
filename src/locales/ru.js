@@ -243,7 +243,7 @@ export const ru = {
     brandDesc: "MAN Engineering Consultancy — Создаём наш след в мире инженерного консультирования с высочайшими стандартами качества и профессионализма.",
     quickLinks: "Быстрые ссылки",
     services: "Услуги",
-    rightsReserved: "MAN Engineering Consultancy — Все права защищены",
+    rightsReserved: "Все права защищены © {year} MAN Engineering Consultancy | Королевство Саудовская Аравия",
     location: "Джидда, Саудовская Аравия"
   },
   music: {

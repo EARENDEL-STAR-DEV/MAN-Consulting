@@ -243,7 +243,7 @@ export const zh = {
     brandDesc: "MAN工程咨询 — 我们以最高的质量和专业标准，在工程咨询领域打造我们的品牌。",
     quickLinks: "快速链接",
     services: "我们的服务",
-    rightsReserved: "MAN Engineering Consultancy — 保留所有权利",
+    rightsReserved: "保留所有权利 © {year} MAN Engineering Consultancy | 沙特阿拉伯王国",
     location: "吉达，沙特阿拉伯"
   },
   music: {
