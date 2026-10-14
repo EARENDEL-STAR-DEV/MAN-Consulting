@@ -166,7 +166,7 @@ const Footer = () => {
                   name: "Instagram",
                 },
                 { icon: BsTwitterX, href: "http://x.com/KsaMnc?lang=ar", name: "X (Twitter)" },
-                { icon: FaWhatsapp, href: "https://wa.me/966569898000", name: "WhatsApp" },
+                { icon: FaWhatsapp, href: "https://wa.me/966505649859", name: "WhatsApp" },
               ].map((social, index) => (
                 <motion.a
                   key={index}

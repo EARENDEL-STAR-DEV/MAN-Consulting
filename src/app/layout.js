@@ -69,7 +69,7 @@ const structuredData = {
   alternateName: "شركة MAN للاستشارات الهندسية",
   url: siteUrl,
   email: "info@marwannazer.com",
-  telephone: "+966569898000",
+  telephone: "+966505649859",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Al-Andalus District - 2781 Abdulrahman Al-Tubaishi St.",

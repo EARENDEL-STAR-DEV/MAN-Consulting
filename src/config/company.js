@@ -5,13 +5,13 @@ export const COMPANY = {
   // Outgoing mail is sent through the mail.mnc.sa SMTP account, so the
   // From address must stay on that domain; replies go to `email` via Reply-To.
   senderEmail: "hr@mnc.sa",
-  phone: "0569898000",
-  whatsapp: "966569898000", // international format, used for wa.me links
+  phone: "0505649859",
+  whatsapp: "966505649859", // international format, used for wa.me links
 };
 
-// Number the site used before 0569898000. A copy may still be saved in the
-// dashboard (Firestore "contact" doc); treat it as unset so the new number shows.
-export const LEGACY_PHONE = "0598242385";
-export const LEGACY_WHATSAPP = "966598242385";
+// Numbers the site used before 0505649859. A copy may still be saved in the
+// dashboard (Firestore "contact" doc); treat them as unset so the new number shows.
+export const LEGACY_PHONES = ["0598242385", "0569898000", "966569898000"];
+export const LEGACY_WHATSAPPS = ["966598242385", "966569898000"];
 // Contact email used before info@marwannazer.com (may still be saved in the dashboard)
 export const LEGACY_EMAIL = "hr@mnc.sa";

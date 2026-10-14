@@ -38,7 +38,7 @@ const FloatingContact = () => {
     <div className={`fixed bottom-6 ${isRTL ? 'left-6' : 'right-6'} flex flex-col gap-3 z-50 transition-all duration-500`}>
       {/* WhatsApp - Hidden on mobile until scroll */}
       <Link
-        href="https://wa.me/966569898000"
+        href="https://wa.me/966505649859"
         target="_blank"
         rel="noopener noreferrer"
         className={`md:flex w-12 h-12 bg-secondary text-white rounded-full items-center justify-center shadow-lg hover:bg-gold transition-colors hover:-translate-y-1 duration-300 ${
