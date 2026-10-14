@@ -243,7 +243,7 @@ export const es = {
     brandDesc: "MAN Engineering Consultancy — Construyendo nuestra marca en el mundo de la consultoría de ingeniería con los más altos estándares de calidad y profesionalismo.",
     quickLinks: "Enlaces Rápidos",
     services: "Servicios",
-    rightsReserved: "Todos los derechos reservados © {year} MAN Engineering Consultancy | Reino de Arabia Saudita",
+    rightsReserved: "Todos los derechos reservados © {year} MAN Engineering Consultancy",
     location: "Yeda, Arabia Saudita"
   },
   music: {

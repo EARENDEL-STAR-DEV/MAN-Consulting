@@ -243,7 +243,7 @@ export const de = {
     brandDesc: "MAN Engineering Consultancy — Wir konstruieren unsere Marke in der Welt der Ingenieurberatung mit höchsten Standards an Qualität und Professionalität.",
     quickLinks: "Schnelllinks",
     services: "Dienstleistungen",
-    rightsReserved: "Alle Rechte vorbehalten © {year} MAN Engineering Consultancy | Königreich Saudi-Arabien",
+    rightsReserved: "Alle Rechte vorbehalten © {year} MAN Engineering Consultancy",
     location: "Dschidda, Saudi-Arabien"
   },
   music: {

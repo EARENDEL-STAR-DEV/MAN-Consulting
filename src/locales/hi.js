@@ -243,7 +243,7 @@ export const hi = {
     brandDesc: "MAN Engineering Consultancy — गुणवत्ता और व्यावसायिकता के उच्चतम मानकों के साथ इंजीनियरिंग परामर्श की दुनिया में हमारी छाप बना रहे हैं।",
     quickLinks: "त्वरित लिंक",
     services: "सेवाएं",
-    rightsReserved: "सर्वाधिकार सुरक्षित © {year} MAN Engineering Consultancy | सऊदी अरब साम्राज्य",
+    rightsReserved: "सर्वाधिकार सुरक्षित © {year} MAN Engineering Consultancy",
     location: "जेद्दाह, सऊदी अरब"
   },
   music: {

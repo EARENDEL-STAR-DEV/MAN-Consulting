@@ -243,7 +243,7 @@ export const en = {
     brandDesc: "MAN Engineering Consultancy — Building our mark in construction with the highest standards of quality and professionalism for over 40 years.",
     quickLinks: "Quick Links",
     services: "Services",
-    rightsReserved: "All rights reserved © {year} MAN Engineering Consultancy | Kingdom of Saudi Arabia",
+    rightsReserved: "All rights reserved © {year} MAN Engineering Consultancy",
     location: "Jeddah, Saudi Arabia"
   },
   music: {

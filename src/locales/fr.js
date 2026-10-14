@@ -243,7 +243,7 @@ export const fr = {
     brandDesc: "MAN Engineering Consultancy — Nous construisons notre réputation dans le monde du conseil en ingénierie avec les plus hauts standards de qualité et de professionnalisme.",
     quickLinks: "Liens Rapides",
     services: "Services",
-    rightsReserved: "Tous droits réservés © {year} MAN Engineering Consultancy | Royaume d'Arabie saoudite",
+    rightsReserved: "Tous droits réservés © {year} MAN Engineering Consultancy",
     location: "Djeddah, Arabie Saoudite"
   },
   music: {

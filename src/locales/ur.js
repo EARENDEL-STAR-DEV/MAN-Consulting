@@ -243,7 +243,7 @@ export const ur = {
     brandDesc: "MAN Engineering Consultancy — انجینئرنگ کنسلٹنسی کی دنیا میں اعلیٰ معیار اور پیشہ ورانہ مہارت کے ساتھ اپنی پہچان بنا رہے ہیں۔",
     quickLinks: "فوری روابط",
     services: "خدمات",
-    rightsReserved: "جملہ حقوق محفوظ ہیں © {year} MAN Engineering Consultancy | مملکتِ سعودی عرب",
+    rightsReserved: "جملہ حقوق محفوظ ہیں © {year} MAN Engineering Consultancy",
     location: "جدہ، سعودی عرب"
   },
   music: {
