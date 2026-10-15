@@ -10,6 +10,7 @@ import { MusicProvider } from "@/context/MusicContext";
 import { AuthProvider } from "@/context/AuthContext";
 import AdminShortcut from "@/components/AdminShortcut";
 import ParallaxHeroEffect from "@/components/ui/ParallaxHeroEffect";
+import GoogleTag from "@/components/analytics/GoogleTag";
 
 // Floating voice-presentation widget: not part of the initial view (fixed
 // overlay, renders null until mounted), so it's code-split out of the main
@@ -106,6 +107,7 @@ export default function RootLayout({ children }) {
           </LanguageProvider>
         </ThemeProvider>
         </AuthProvider>
+        <GoogleTag />
       </body>
     </html>
   );
