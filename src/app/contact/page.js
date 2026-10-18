@@ -328,7 +328,7 @@ export default function ContactPage() {
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data?.error || "Error. Please try again.");
       // Google Ads conversion: lead form submitted
-      trackConversion(CONVERSION_LABELS.contactForm);
+      trackConversion(CONVERSION_LABELS.contactForm, { value: 1.0 });
       setFormSubmitted(true);
     } catch (err) {
       setFormError(err?.message || "Error. Please try again.");
