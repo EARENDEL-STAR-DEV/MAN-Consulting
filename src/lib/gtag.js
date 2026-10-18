@@ -12,7 +12,7 @@ export const CONVERSION_LABELS = {
   whatsapp: process.env.NEXT_PUBLIC_GOOGLE_ADS_LABEL_WHATSAPP || "",
   phone: process.env.NEXT_PUBLIC_GOOGLE_ADS_LABEL_PHONE || "",
   email: process.env.NEXT_PUBLIC_GOOGLE_ADS_LABEL_EMAIL || "",
-  contactForm: process.env.NEXT_PUBLIC_GOOGLE_ADS_LABEL_CONTACT_FORM || "LAZ2CJn87qAdEJm09ddE",
+  contactForm: process.env.NEXT_PUBLIC_GOOGLE_ADS_LABEL_CONTACT_FORM || "",
 };
 
 /** Low-level wrapper around window.gtag. */
