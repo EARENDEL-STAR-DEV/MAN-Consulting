@@ -8,6 +8,7 @@ import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { useLanguage } from "@/context/LanguageContext";
 import { useSiteContent } from "@/hooks/useSiteContent";
 import { COMPANY, LEGACY_EMAIL, LEGACY_PHONES, LEGACY_WHATSAPPS } from "@/config/company";
+import { trackConversion, CONVERSION_LABELS } from "@/lib/gtag";
 
 /* ── Themed pin icon (gold gradient, matches site theme) for the Google Maps JS API marker ── */
 const MAP_PIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="38" height="50" viewBox="0 0 38 50" fill="none">
@@ -326,6 +327,8 @@ export default function ContactPage() {
       });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data?.error || "Error. Please try again.");
+      // Google Ads conversion: lead form submitted
+      trackConversion(CONVERSION_LABELS.contactForm);
       setFormSubmitted(true);
     } catch (err) {
       setFormError(err?.message || "Error. Please try again.");

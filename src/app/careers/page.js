@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { DEPARTMENTS, TRADES } from "@/lib/recruitmentConfig";
 import { uploadAsset } from "@/lib/cloudinary";
+import { trackConversion, CONVERSION_LABELS } from "@/lib/gtag";
 
 const BENEFIT_ICONS = [Award, TrendingUp, Users, Building2];
 
@@ -196,6 +197,8 @@ export default function CareersPage() {
       });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data?.error || "Error. Please try again.");
+      // Google Ads conversion: lead form submitted
+      trackConversion(CONVERSION_LABELS.contactForm);
       setSubmitted(true);
       window.scrollTo({ top: formRef.current?.offsetTop - 100, behavior: "smooth" });
     } catch (err) {
