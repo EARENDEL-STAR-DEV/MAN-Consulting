@@ -61,30 +61,25 @@ export default function ArticlesPageClient() {
             </div>
           ) : (
             <>
-              {/* Latest article — featured */}
-              <Link
-                href={`/articles/${latest.id}`}
-                className="group grid grid-cols-1 lg:grid-cols-2 bg-white rounded-2xl overflow-hidden border border-[rgba(0,0,0,0.06)] shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] transition-all duration-300"
-                dir="rtl"
-                data-aos="fade-up"
-              >
-                <div className="relative w-full aspect-[16/10] lg:aspect-auto lg:min-h-[380px] overflow-hidden">
-                  <Image
-                    src={latest.coverImage || ARTICLE_FALLBACK_COVER}
-                    alt={latest.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <span className="absolute top-4 start-4 inline-flex items-center gap-1.5 bg-[#D4A843] text-[#1F2937] text-[11px] font-bold tracking-wide px-3 py-1 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#1F2937] animate-pulse" />
-                    أحدث مقال
-                  </span>
-                </div>
-                <div className="p-7 md:p-10 flex flex-col justify-center">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[#4B5563] text-xs font-semibold mb-4">
+              {/* Latest article — featured, laid flat on the page (no raised card) */}
+              <Link href={`/articles/${latest.id}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center" dir="rtl" data-aos="fade-up">
+                {/* Natural aspect ratio — the full photo, never cropped. */}
+                <Image
+                  src={latest.coverImage || ARTICLE_FALLBACK_COVER}
+                  alt={latest.title}
+                  width={0}
+                  height={0}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="w-full h-auto rounded-xl opacity-95 group-hover:opacity-100 transition-opacity"
+                />
+                <div>
+                  <span className="inline-block text-[#D4A843] text-xs font-bold tracking-wide mb-4">أحدث مقال</span>
+                  <h2 className="text-2xl md:text-3xl font-black text-white leading-[1.4] mb-4 group-hover:text-[#D4A843] transition-colors">
+                    {latest.title}
+                  </h2>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/45 text-xs font-semibold mb-5">
                     {latest.source && (
-                      <span className="inline-flex items-center gap-1.5 text-[#B8902F]">
+                      <span className="inline-flex items-center gap-1.5">
                         <Newspaper size={13} />
                         {latest.source}
                       </span>
@@ -94,59 +89,43 @@ export default function ArticlesPageClient() {
                       {formatArticleDate(latest.date)}
                     </span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-black text-[#1F2937] leading-[1.35] mb-4 group-hover:text-[#B8902F] transition-colors">
-                    {latest.title}
-                  </h2>
-                  <p className="text-[#4B5563] text-base leading-[1.9] mb-6 line-clamp-4">
+                  <p className="text-white/70 text-base leading-[2] mb-6 line-clamp-4">
                     {latest.excerpt || toParagraphs(latest.content)[0]}
                   </p>
-                  <div className="flex items-center justify-between gap-4 pt-5 border-t border-[rgba(0,0,0,0.08)]">
-                    {latest.author && <span className="text-[#1F2937] text-sm font-bold">{latest.author}</span>}
-                    <span className="inline-flex items-center gap-1.5 bg-[#D4A843] group-hover:bg-[#E8C46A] text-[#1F2937] text-sm font-bold px-5 py-2.5 rounded-xl transition-colors">
-                      اقرأ المقال
-                      <ArrowLeft size={14} />
-                    </span>
-                  </div>
+                  <span className="inline-flex items-center gap-1.5 text-[#D4A843] text-sm font-bold">
+                    اقرأ المقال
+                    <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+                  </span>
                 </div>
               </Link>
 
               {/* Archive — older articles, newest first */}
               {archive.length > 0 && (
-                <div className="mt-16">
-                  <h2 className="text-2xl font-bold text-white mb-8">
+                <div className="mt-16 pt-10 border-t border-white/10 max-w-4xl">
+                  <h2 className="text-lg font-bold text-white/80 mb-4">
                     {lang === "ar" ? "أرشيف المقالات" : "Articles Archive"}
                   </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="divide-y divide-white/10" dir="rtl">
                     {archive.map((article) => (
-                      <Link
-                        key={article.id}
-                        href={`/articles/${article.id}`}
-                        className="group bg-white rounded-2xl overflow-hidden border border-[rgba(0,0,0,0.06)] shadow-[0_4px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.14)] transition-all duration-300 flex flex-col"
-                      >
-                        <div className="relative h-48 w-full overflow-hidden">
-                          <Image
-                            src={article.coverImage || ARTICLE_FALLBACK_COVER}
-                            alt={article.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        </div>
-                        <div className="p-6 flex flex-col flex-1" dir="rtl">
-                          <div className="flex items-center gap-2 text-[#4B5563] text-xs font-semibold mb-3">
-                            <CalendarDays size={13} />
-                            {formatArticleDate(article.date)}
-                            {article.source && <span>· {article.source}</span>}
-                          </div>
-                          <h3 className="text-lg font-bold text-[#1F2937] leading-snug mb-3 group-hover:text-[#D4A843] transition-colors">
+                      <Link key={article.id} href={`/articles/${article.id}`} className="group flex items-center gap-5 py-5">
+                        <Image
+                          src={article.coverImage || ARTICLE_FALLBACK_COVER}
+                          alt={article.title}
+                          width={128}
+                          height={84}
+                          className="w-32 h-[84px] rounded-lg object-cover flex-shrink-0 opacity-90 group-hover:opacity-100 transition-opacity"
+                        />
+                        <div className="min-w-0">
+                          <h3 className="text-base font-bold text-white/85 leading-snug mb-1.5 group-hover:text-[#D4A843] transition-colors">
                             {article.title}
                           </h3>
-                          <p className="text-[#4B5563] text-sm leading-relaxed mb-5 flex-1 line-clamp-3">
+                          <p className="text-white/40 text-xs font-semibold">
+                            {formatArticleDate(article.date)}
+                            {article.source && <span> · {article.source}</span>}
+                          </p>
+                          <p className="text-white/55 text-sm leading-relaxed mt-2 line-clamp-2 hidden sm:block">
                             {article.excerpt || toParagraphs(article.content)[0]}
                           </p>
-                          <span className="inline-flex items-center gap-1.5 text-[#D4A843] text-sm font-bold">
-                            اقرأ المقال
-                            <ArrowLeft size={14} />
-                          </span>
                         </div>
                       </Link>
                     ))}
