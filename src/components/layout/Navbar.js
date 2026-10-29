@@ -153,27 +153,25 @@ const Navbar = () => {
 
   /* ── Priority tiers ──────────────────────────────────────────────
      tier 1 (no tier field): always inline, every width ≥1024px. Home,
-       Services, Projects, Contact, About, Engineering Design and Careers
+       Services, Projects, Contact, About, Articles and Careers
        are all required to be permanently visible — never collapsed —
        so the space budget for them is covered by the compact label
        text (see locales) plus the tightened gap/font/action-zone
        values below, not by hiding items.
-     isSecondary (tier 3, unchanged): inline only from 1650px up, else
-       lives in the "More" menu. These 4 service sub-pages are the only
-       genuinely lower-priority items in the list. ── */
+     isSecondary (tier 3): always lives in the "More" menu, at every
+       screen width — never pulled inline on wide screens. ── */
   const navLinks = useMemo(() => [
     { name: t('nav.home'),     href: "/",                icon: Home },
     { name: t('nav.about'),    href: "/us",              icon: Info },
     { name: t('nav.services'), href: "/#services",       icon: Briefcase, isServicesDropdown: true },
     { name: t('nav.projects'), href: "/projects",        icon: FolderOpen },
-    { name: t('nav.engineeringDesign'), href: "/engineering-design", icon: Ruler },
+    { name: t('nav.articles'), href: "/articles",        icon: PenLine },
     { name: t('nav.contact'), href: "/contact",          icon: PhoneCall },
     { name: t('nav.careers'), href: "/careers",          icon: Users },
     { name: t('nav.buildingPermits'),    href: "/building-permits",    icon: FileCheck,     isSecondary: true },
     { name: t('nav.engineeringReports'), href: "/engineering-reports", icon: ClipboardList, isSecondary: true },
     { name: t('nav.siteSupervision'),    href: "/site-supervision",    icon: Eye,           isSecondary: true },
     { name: t('nav.blog'),    href: "/blog",            icon: Newspaper,          isSecondary: true },
-    { name: t('nav.articles'), href: "/articles",        icon: PenLine,            isSecondary: true },
   ], [t]);
 
   /* â”€â”€ Engineering Services dropdown items â€” the 4 core service pages,
@@ -183,6 +181,7 @@ const Navbar = () => {
     { name: t('servicesSection.items.architecture.title'), href: "/services/architectural-design", icon: Compass },
     { name: t('servicesSection.items.management.title'),   href: "/services/project-management",  icon: FolderKanban },
     { name: t('servicesSection.items.interior.title'),     href: "/services/interior-design",      icon: Sofa },
+    { name: t('nav.engineeringDesign'),                  href: "/engineering-design",            icon: Ruler },
   ], [t]);
 
   const currentLang = LANGUAGES.find(l => l.code === lang) || LANGUAGES[0];
@@ -240,7 +239,7 @@ const Navbar = () => {
                whole [Logo][Nav][Actions] group as one block instead. ── */}
           <div className="hidden xl:flex items-center gap-6 2xl:gap-7 min-[1920px]:gap-8">
             <nav className="flex items-center flex-shrink-0 gap-6 2xl:gap-7 min-[1920px]:gap-8" aria-label={t('nav.ariaLabel')}>
-              {navLinks.map((link) => {
+              {navLinks.filter(l => !l.isSecondary).map((link) => {
                 const isActive = pathname === link.href;
 
                 if (link.isSpecial) {
@@ -315,7 +314,7 @@ const Navbar = () => {
                       isActive
                         ? "text-[#D4A843]"
                         : "text-[#B4AFA3] hover:text-[#D4A843]"
-                    } ${link.isSecondary ? "hidden min-[1650px]:inline-flex" : ""}`}>
+                    }`}>
                     {link.name}
                     {/* Underline indicator */}
                     <span className={`absolute bottom-[5px] left-1/2 -translate-x-1/2 h-[2px] rounded-full transition-all duration-300 ${
@@ -330,7 +329,7 @@ const Navbar = () => {
 
             {/* ── "More" dropdown ── holds secondary links ── */}
             <div
-              className="relative min-[1650px]:hidden me-1"
+              className="relative me-1"
               ref={moreDropdownRef}
               onMouseEnter={() => setIsMoreOpen(true)}
               onMouseLeave={() => setIsMoreOpen(false)}
