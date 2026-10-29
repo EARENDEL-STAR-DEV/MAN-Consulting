@@ -8,6 +8,14 @@ import { toParagraphs } from "@/lib/articlesRepo";
 /* Full article (photo + text + author), laid directly on the page background
    (no raised card) for a calm, editorial reading layout. Shared by the
    /articles listing (today's article) and the /articles/[id] page. */
+/* Cloudinary uploads can be several thousand px wide — ask Cloudinary for a
+   resized, auto-format copy (c_limit never enlarges smaller originals). */
+function sizedCover(url) {
+  return url.includes("res.cloudinary.com") && url.includes("/upload/")
+    ? url.replace("/upload/", "/upload/c_limit,w_1600,q_auto,f_auto/")
+    : url;
+}
+
 export default function ArticleBody({ article }) {
   const directorPhoto = useDirectorPhoto();
   const paragraphs = toParagraphs(article.content);
@@ -15,18 +23,18 @@ export default function ArticleBody({ article }) {
   return (
     <article dir="rtl">
       {article.coverImage && (
-        <figure className="mb-12">
-          {/* Natural aspect ratio — the full photo, never cropped. */}
-          <Image
-            src={article.coverImage}
+        <figure className="mb-12 flex flex-col items-center">
+          {/* Plain <img> at its natural size: the full photo, never cropped
+              and never upscaled past its real resolution (no pixelation);
+              large photos shrink to the column width / max height. */}
+          <img
+            src={sizedCover(article.coverImage)}
             alt={article.title}
-            width={0}
-            height={0}
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="w-full h-auto rounded-xl"
+            loading="lazy"
+            className="block w-auto h-auto max-w-full max-h-[480px] rounded-xl"
           />
           {article.source && (
-            <figcaption className="text-white/40 text-xs font-semibold mt-3">
+            <figcaption className="text-white/40 text-xs font-semibold mt-3 text-center">
               الصورة: {article.source}
             </figcaption>
           )}
