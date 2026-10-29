@@ -9,6 +9,7 @@ export const zh = {
     engineeringReports: "工程报告",
     siteSupervision: "现场监理",
     blog: "博客",
+    articles: "文章",
     contact: "联系我们",
     profile: "下载简介",
     careers: "招聘",
@@ -515,6 +516,7 @@ export const zh = {
         tabJobs: "招聘",
         tabCalculator: "费用计算器",
         tabSettings: "公司设置",
+        tabArticles: "文章",
       },
       aboutTab: {
         aboutSectionTitle: "公司简介",

@@ -9,6 +9,7 @@ export const ar = {
     engineeringReports: "التقارير الهندسية",
     siteSupervision: "الإشراف الموقعي",
     blog: "المدونة",
+    articles: "المقالات",
     contact: "تواصل معنا",
     profile: "البروفايل",
     careers: "وظائف",
@@ -610,6 +611,7 @@ export const ar = {
         tabJobs: "الوظائف",
         tabCalculator: "احسب تكلفتك",
         tabSettings: "إعدادات الشركة",
+        tabArticles: "المقالات",
       },
       aboutTab: {
         aboutSectionTitle: "نبذة عن الشركة",

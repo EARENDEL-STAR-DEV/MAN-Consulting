@@ -9,6 +9,7 @@ export const tr = {
     engineeringReports: "Mühendislik Raporları",
     siteSupervision: "Saha Denetimi",
     blog: "Blog",
+    articles: "Makaleler",
     contact: "İletişim",
     profile: "Profil İndir",
     careers: "Kariyer",
@@ -515,6 +516,7 @@ export const tr = {
         tabJobs: "İş İlanları",
         tabCalculator: "Maliyet Hesapla",
         tabSettings: "Şirket Ayarları",
+        tabArticles: "Makaleler",
       },
       aboutTab: {
         aboutSectionTitle: "Şirket Hakkında",

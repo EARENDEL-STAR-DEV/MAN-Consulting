@@ -9,6 +9,7 @@ export const ru = {
     engineeringReports: "Инженерные отчёты",
     siteSupervision: "Надзор на объекте",
     blog: "Блог",
+    articles: "Статьи",
     contact: "Контакты",
     profile: "Скачать профиль",
     careers: "Карьера",
@@ -599,6 +600,7 @@ export const ru = {
         tabJobs: "Вакансии",
         tabCalculator: "Рассчитать стоимость",
         tabSettings: "Настройки компании",
+        tabArticles: "Статьи",
       },
       aboutTab: {
         aboutSectionTitle: "О компании",

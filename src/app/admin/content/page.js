@@ -12,6 +12,7 @@ const ServicesTab   = dynamic(() => import('@/components/admin/content/ServicesT
 const AboutTab      = dynamic(() => import('@/components/admin/content/AboutTab'),      { ssr: false });
 const ContactTab    = dynamic(() => import('@/components/admin/content/ContactTab'),    { ssr: false });
 const JobsTab       = dynamic(() => import('@/components/admin/content/JobsTab'),       { ssr: false });
+const ArticlesTab   = dynamic(() => import('@/components/admin/content/ArticlesTab'),   { ssr: false });
 const CalculatorTab = dynamic(() => import('@/components/admin/content/CalculatorTab'),{ ssr: false });
 const SettingsTab   = dynamic(() => import('@/components/admin/content/SettingsTab'),  { ssr: false });
 
@@ -22,6 +23,7 @@ const TABS = [
   { id: 'about',      labelKey: 'admin.contentTabs.contentPage.tabAbout',      emoji: '👤', component: AboutTab },
   { id: 'contact',    labelKey: 'admin.contentTabs.contentPage.tabContact',    emoji: '📞', component: ContactTab },
   { id: 'jobs',       labelKey: 'admin.contentTabs.contentPage.tabJobs',       emoji: '💼', component: JobsTab },
+  { id: 'articles',   labelKey: 'admin.contentTabs.contentPage.tabArticles',   emoji: '📰', component: ArticlesTab },
   { id: 'calculator', labelKey: 'admin.contentTabs.contentPage.tabCalculator', emoji: '🧮', component: CalculatorTab },
   { id: 'settings',   labelKey: 'admin.contentTabs.contentPage.tabSettings',   emoji: '⚙️', component: SettingsTab },
 ];

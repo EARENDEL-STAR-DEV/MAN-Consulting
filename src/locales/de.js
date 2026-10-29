@@ -9,6 +9,7 @@ export const de = {
     engineeringReports: "Technische Berichte",
     siteSupervision: "Bauüberwachung",
     blog: "Blog",
+    articles: "Artikel",
     contact: "Kontakt",
     profile: "Profil Herunterladen",
     careers: "Karriere",
@@ -515,6 +516,7 @@ export const de = {
         tabJobs: "Stellenangebote",
         tabCalculator: "Kostenrechner",
         tabSettings: "Unternehmenseinstellungen",
+        tabArticles: "Artikel",
       },
       aboutTab: {
         aboutSectionTitle: "Über das Unternehmen",

@@ -9,6 +9,7 @@ export const hi = {
     engineeringReports: "इंजीनियरिंग रिपोर्ट",
     siteSupervision: "साइट पर्यवेक्षण",
     blog: "ब्लॉग",
+    articles: "लेख",
     contact: "संपर्क",
     profile: "प्रोफ़ाइल डाउनलोड करें",
     careers: "करियर",
@@ -604,6 +605,7 @@ export const hi = {
         tabJobs: "नौकरियां",
         tabCalculator: "लागत की गणना करें",
         tabSettings: "कंपनी सेटिंग्स",
+        tabArticles: "लेख",
       },
       aboutTab: {
         aboutSectionTitle: "कंपनी के बारे में",

@@ -36,6 +36,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.makkahnews.sa',
+      },
     ],
   },
 };

@@ -9,6 +9,7 @@ export const en = {
     engineeringReports: "Engineering Reports",
     siteSupervision: "Site Supervision",
     blog: "Blog",
+    articles: "Articles",
     contact: "Contact",
     profile: "Download Profile",
     careers: "Careers",
@@ -604,6 +605,7 @@ export const en = {
         tabJobs: "Jobs",
         tabCalculator: "Cost Calculator",
         tabSettings: "Company Settings",
+        tabArticles: "Articles",
       },
       aboutTab: {
         aboutSectionTitle: "About the Company",

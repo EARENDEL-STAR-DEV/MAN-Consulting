@@ -9,6 +9,7 @@ export const ur = {
     engineeringReports: "انجینئرنگ رپورٹس",
     siteSupervision: "سائٹ کی نگرانی",
     blog: "بلاگ",
+    articles: "مضامین",
     contact: "رابطہ",
     profile: "پروفائل ڈاؤنلوڈ",
     careers: "ملازمتیں",
@@ -515,6 +516,7 @@ export const ur = {
         tabJobs: "ملازمتیں",
         tabCalculator: "لاگت کا حساب لگائیں",
         tabSettings: "کمپنی کی ترتیبات",
+        tabArticles: "مضامین",
       },
       aboutTab: {
         aboutSectionTitle: "کمپنی کے بارے میں",

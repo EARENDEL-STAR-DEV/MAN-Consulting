@@ -201,6 +201,13 @@ service cloud.firestore {
       allow create, update, delete: if cmsIsSuperAdmin();
     }
 
+    // Director newspaper articles (/articles) — public sees published only.
+    match /articles/{articleId} {
+      allow read: if resource.data.published == true;
+      allow read: if cmsIsSuperAdmin();
+      allow create, update, delete: if cmsIsSuperAdmin();
+    }
+
     match /mediaLibrary/{assetId} {
       allow read, write: if cmsIsSuperAdmin();
     }

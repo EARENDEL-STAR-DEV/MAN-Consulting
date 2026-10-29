@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, X, ChevronDown, Calculator, Home, Info, Briefcase, FolderOpen, PhoneCall, Globe, Users, UserCircle, UserCog, LogOut, LayoutDashboard, Bell, Ruler, FileCheck, ClipboardList, Eye, Newspaper, Building2, Compass, FolderKanban, Sofa } from "lucide-react";
+import { Menu, X, ChevronDown, Calculator, Home, Info, Briefcase, FolderOpen, PhoneCall, Globe, Users, UserCircle, UserCog, LogOut, LayoutDashboard, Bell, Ruler, FileCheck, ClipboardList, Eye, Newspaper, PenLine, Building2, Compass, FolderKanban, Sofa } from "lucide-react";
 import { useLanguage, LANGUAGES } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import { useAuth } from "@/context/AuthContext";
@@ -173,6 +173,7 @@ const Navbar = () => {
     { name: t('nav.engineeringReports'), href: "/engineering-reports", icon: ClipboardList, isSecondary: true },
     { name: t('nav.siteSupervision'),    href: "/site-supervision",    icon: Eye,           isSecondary: true },
     { name: t('nav.blog'),    href: "/blog",            icon: Newspaper,          isSecondary: true },
+    { name: t('nav.articles'), href: "/articles",        icon: PenLine,            isSecondary: true },
   ], [t]);
 
   /* â”€â”€ Engineering Services dropdown items â€” the 4 core service pages,
