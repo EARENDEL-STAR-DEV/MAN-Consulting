@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, CalendarDays, Loader2, Newspaper, PenLine } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
+import ArticleBody from "./ArticleBody";
 import { useLanguage } from "@/context/LanguageContext";
 import { ARTICLE_FALLBACK_COVER, formatArticleDate, subscribePublishedArticles, toParagraphs } from "@/lib/articlesRepo";
 
@@ -20,7 +21,7 @@ export default function ArticlesPageClient() {
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="image-hero relative min-h-[55vh] flex items-center justify-center overflow-hidden">
+      <section className="image-hero no-mobile-vh relative min-h-[46vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src={ARTICLE_FALLBACK_COVER}
@@ -47,8 +48,8 @@ export default function ArticlesPageClient() {
         </div>
       </section>
 
-      {/* ── Articles Grid ── */}
-      <section className="py-20" style={{ backgroundColor: "var(--background)" }}>
+      {/* ── Today's article + archive ── */}
+      <section className="py-14" style={{ backgroundColor: "var(--background)" }}>
         <div className="container mx-auto px-6 max-w-6xl">
           {articles === null ? (
             <div className="flex items-center justify-center py-20">
@@ -61,47 +62,38 @@ export default function ArticlesPageClient() {
             </div>
           ) : (
             <>
-              {/* Latest article — featured, laid flat on the page (no raised card) */}
-              <Link href={`/articles/${latest.id}`} className="group grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center" dir="rtl" data-aos="fade-up">
-                {/* Natural aspect ratio — the full photo, never cropped. */}
-                <Image
-                  src={latest.coverImage || ARTICLE_FALLBACK_COVER}
-                  alt={latest.title}
-                  width={0}
-                  height={0}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="w-full h-auto rounded-xl opacity-95 group-hover:opacity-100 transition-opacity"
-                />
-                <div>
-                  <span className="inline-block text-[#D4A843] text-xs font-bold tracking-wide mb-4">أحدث مقال</span>
-                  <h2 className="text-2xl md:text-3xl font-black text-white leading-[1.4] mb-4 group-hover:text-[#D4A843] transition-colors">
-                    {latest.title}
-                  </h2>
-                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/45 text-xs font-semibold mb-5">
+              {/* Latest article — shown in full (one article is published per day) */}
+              <div className="max-w-3xl mx-auto">
+                <header className="mb-10" dir="rtl">
+                  <span className="inline-flex items-center gap-2 text-[#D4A843] text-xs font-bold tracking-wide mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#D4A843] animate-pulse" />
+                    أحدث مقال
+                  </span>
+                  <Link href={`/articles/${latest.id}`}>
+                    <h2 className="text-3xl md:text-4xl font-black text-white leading-[1.35] mb-5 hover:text-[#D4A843] transition-colors">
+                      {latest.title}
+                    </h2>
+                  </Link>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white/50 text-sm font-semibold">
+                    {latest.author && <span className="text-white/80 font-bold">{latest.author}</span>}
                     {latest.source && (
                       <span className="inline-flex items-center gap-1.5">
-                        <Newspaper size={13} />
+                        <Newspaper size={14} />
                         {latest.source}
                       </span>
                     )}
                     <span className="inline-flex items-center gap-1.5">
-                      <CalendarDays size={13} />
+                      <CalendarDays size={14} />
                       {formatArticleDate(latest.date)}
                     </span>
                   </div>
-                  <p className="text-white/70 text-base leading-[2] mb-6 line-clamp-4">
-                    {latest.excerpt || toParagraphs(latest.content)[0]}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-[#D4A843] text-sm font-bold">
-                    اقرأ المقال
-                    <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </Link>
+                </header>
+                <ArticleBody article={latest} />
+              </div>
 
               {/* Archive — older articles, newest first */}
               {archive.length > 0 && (
-                <div className="mt-16 pt-10 border-t border-white/10 max-w-4xl">
+                <div className="mt-16 pt-10 border-t border-white/10 max-w-3xl mx-auto">
                   <h2 className="text-lg font-bold text-white/80 mb-4">
                     {lang === "ar" ? "أرشيف المقالات" : "Articles Archive"}
                   </h2>
