@@ -22,6 +22,14 @@ export function toParagraphs(content = '') {
   return content.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
 }
 
+/* "2026-10-22" → "22 أكتوبر 2026" (Gregorian, Latin digits — same output on server and client). */
+export function formatArticleDate(date) {
+  if (!date) return '';
+  const d = new Date(`${date}T12:00:00Z`);
+  if (Number.isNaN(d.getTime())) return date;
+  return d.toLocaleDateString('ar-u-ca-gregory-nu-latn', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
 /* ── Admin: full collection access ── */
 
 export function subscribeArticles(callback) {
